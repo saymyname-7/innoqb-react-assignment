@@ -14,6 +14,7 @@ export default function Home() {
   const [sliderRef, instanceRef] = useKeenSlider({
     slides: {
       perView: 5,
+      spacing: 13,
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -36,9 +37,28 @@ export default function Home() {
   }
 
   const productCards = data.products.map((p) => {
+    const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
+    const rounded = Math.round(discountedPrice * 10) / 10
+    const actualPrice = rounded.toFixed(2)
+
     return (
       <Card key={p.id} className='keen-slider__slide'>
-        <Image src={p.thumbnail} alt={p.description} width={500} height={500} />
+        <div className='h-56 relative'>
+          <Image
+            src={p.thumbnail}
+            alt={p.description}
+            fill={true}
+            className='object-cover'
+          />
+        </div>
+        <div className='bg-white'>
+          <p>{p.title}</p>
+          <div className='flex space-x-1'>
+            <p className='line-through'>${p.price}</p>
+            <p className=''>From</p>
+            <p className=''>${actualPrice}</p>
+          </div>
+        </div>
       </Card>
     )
   })
@@ -66,7 +86,8 @@ export default function Home() {
             e.stopPropagation() || instanceRef.current?.next()
           }
           disabled={
-            currentSlide === instanceRef.current.track.details.slides.length - 1
+            currentSlide ===
+            instanceRef?.current?.track.details.slides.length - 1
           }
         >
           {'>'}
