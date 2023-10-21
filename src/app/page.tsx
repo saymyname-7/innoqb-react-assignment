@@ -37,9 +37,26 @@ export default function Home() {
   }
 
   const productCards = data.products.map((p) => {
+    const colors = ['#070808', '#fafafa', '#4d4e4f', '#eda74c']
     const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
     const rounded = Math.round(discountedPrice * 10) / 10
     const actualPrice = rounded.toFixed(2)
+
+    const colorButtons = colors.map((color) => {
+      const isActive = color === '#070808'
+      return (
+        <button
+          className={`flex h-9 w-9 items-center justify-center rounded-full ${
+            isActive ? 'border' : ''
+          } text-xs border-[--theme-primary]`}
+        >
+          <span
+            className={`flex h-7 w-7 items-center justify-center rounded-full bg-orange-400`}
+            style={{backgroundColor: `${color}`}}
+          ></span>
+        </button>
+      )
+    })
 
     return (
       <Card key={p.id} className='keen-slider__slide'>
@@ -58,6 +75,7 @@ export default function Home() {
             <p className=''>From</p>
             <p className=''>${actualPrice}</p>
           </div>
+          <div className='lg:flex space-x-1'>{colorButtons}</div>
         </div>
       </Card>
     )
