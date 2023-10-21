@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
+module.exports = {
+  images: {domains: ['i.dummyjson.com'], formats: ['image/avif', 'image/webp']},
+}
