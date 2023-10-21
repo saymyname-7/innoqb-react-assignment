@@ -82,35 +82,32 @@ export default function Home() {
   })
 
   return (
-    <div>
-      <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
-      <div className='flex items-center'>
-        <Button
-          variant={'ghost'}
-          onClick={(e: any) =>
-            e.stopPropagation() || instanceRef.current?.prev()
-          }
-          disabled={currentSlide === 0}
-        >
-          {'<'}
-        </Button>
-        <div ref={sliderRef} className='keen-slider'>
-          {productCards}
+    <div className='flex justify-center items-center'>
+      <Button
+        variant={'ghost'}
+        onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
+        disabled={currentSlide === 0}
+      >
+        {'<'}
+      </Button>
+      <div className='w-[70rem]'>
+        <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
+        <div className=''>
+          <div ref={sliderRef} className='keen-slider'>
+            {productCards}
+          </div>
         </div>
-        <Button
-          variant={'ghost'}
-          className='isR'
-          onClick={(e: any) =>
-            e.stopPropagation() || instanceRef.current?.next()
-          }
-          disabled={
-            currentSlide ===
-            instanceRef?.current?.track.details.slides.length - 1
-          }
-        >
-          {'>'}
-        </Button>
       </div>
+      <Button
+        variant={'ghost'}
+        className='isR'
+        onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
+        disabled={
+          currentSlide === instanceRef?.current?.track.details.slides.length - 1
+        }
+      >
+        {'>'}
+      </Button>
     </div>
   )
 }
