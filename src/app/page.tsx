@@ -18,6 +18,14 @@ export default function Home() {
   const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [sliderRef, instanceRef] = useKeenSlider({
+    breakpoints: {
+      '(min-width: 300px)': {
+        slides: {perView: 2, spacing: 5},
+      },
+      '(min-width: 1000px)': {
+        slides: {perView: 5, spacing: 13},
+      },
+    },
     slides: {
       perView: 5,
       spacing: 13,
@@ -102,7 +110,7 @@ export default function Home() {
     })
 
     return (
-      <Card key={p.id} className='keen-slider__slide border-0 space-y-2'>
+      <Card key={p.id} className='keen-slider__slide border-0 space-y-4'>
         <div className='h-56 group relative overflow-hidden'>
           <Image
             src={p.thumbnail}
@@ -130,16 +138,16 @@ export default function Home() {
             <p className=''>From</p>
             <p className='text-red-500 font-bold'>${actualPrice}</p>
           </div>
-          <div className='lg:flex space-x-1'>{colorButtons}</div>
+          <div className='flex space-x-1'>{colorButtons}</div>
         </div>
         <div className='flex justify-between'>
           <Button
             variant={'outline'}
-            className='grow border-black rounded-full'
+            className='w-11/12 sm:w-full sm:grow border-black rounded-full'
           >
             Add To Cart
           </Button>
-          <Button variant={'ghost'}>
+          <Button variant={'ghost'} className='hidden sm:flex'>
             <HeartIcon height={'20px'} width={'20px'} />
           </Button>
         </div>
@@ -149,17 +157,18 @@ export default function Home() {
 
   return (
     <div className='flex flex-col items-center space-y-6 mt-28'>
-      <div className='flex justify-center items-center w-2/3'>
+      <div className='flex justify-center items-center'>
         <Button
           variant={'ghost'}
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.prev()
           }
           disabled={currentSlide === 0}
+          className='invisible sm:visible'
         >
           {'<'}
         </Button>
-        <div className='w-[70rem]'>
+        <div className='sm:w-[70rem] w-[23rem]'>
           <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
           <div className=''>
             <div ref={sliderRef} className='keen-slider'>
@@ -169,7 +178,7 @@ export default function Home() {
         </div>
         <Button
           variant={'ghost'}
-          className='isR'
+          className='invisible lg:visible'
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
           }
