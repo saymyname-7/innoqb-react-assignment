@@ -8,6 +8,7 @@ import KeenSlider from 'keen-slider'
 import {useKeenSlider} from 'keen-slider/react'
 import {Button} from '@/components/ui/button'
 import {StarIcon, StarFilledIcon, HeartIcon} from '@radix-ui/react-icons'
+import {useThemContext} from './layout'
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max)
@@ -37,6 +38,7 @@ export default function Home() {
       setLoaded(true)
     },
   })
+  const props = useThemContext()
 
   const fetchData = async () => {
     const res = await fetch('https://dummyjson.com/products')
@@ -144,6 +146,11 @@ export default function Home() {
           <Button
             variant={'outline'}
             className='w-11/12 sm:w-full sm:grow border-black rounded-full'
+            onClick={() =>
+              props.setItemAmount((prev) => {
+                return ++prev
+              })
+            }
           >
             Add To Cart
           </Button>
