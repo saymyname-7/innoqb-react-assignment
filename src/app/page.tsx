@@ -130,7 +130,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className='bg-white text-stone-500 text-sm font-semibold space-y-2'>
+        <div className='bg-white text-stone-500 text-sm font-semibold space-y-4 sm:space-y-2'>
           <div className='flex'>{stars}</div>
           <p>{p.title}</p>
           <div className='flex space-x-1 text-stone-400'>
@@ -156,7 +156,7 @@ export default function Home() {
   })
 
   return (
-    <div className='flex flex-col items-center space-y-6 mt-28'>
+    <div className='flex flex-col items-center space-y-6 mt-7 sm:mt-28'>
       <div className='flex justify-center items-center'>
         <Button
           variant={'ghost'}
@@ -168,8 +168,8 @@ export default function Home() {
         >
           {'<'}
         </Button>
-        <div className='sm:w-[70rem] w-[23rem]'>
-          <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
+        <div className='sm:w-[70rem] w-[23rem] space-y-10'>
+          <h1 className='text-red-600 font-bold text-2xl'>Flash Deals</h1>
           <div className=''>
             <div ref={sliderRef} className='keen-slider'>
               {productCards}
