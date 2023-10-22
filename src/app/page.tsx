@@ -74,7 +74,7 @@ export default function Home() {
     })
 
     return (
-      <Card key={p.id} className='keen-slider__slide border-0'>
+      <Card key={p.id} className='keen-slider__slide border-0 space-y-2'>
         <div className='h-56 group relative overflow-hidden'>
           <Image
             src={p.thumbnail}
