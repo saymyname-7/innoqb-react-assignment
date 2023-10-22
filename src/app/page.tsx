@@ -15,6 +15,7 @@ function getRandomInt(max: number) {
 
 export default function Home() {
   const [data, setData] = useState(null)
+  const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [sliderRef, instanceRef] = useKeenSlider({
     slides: {
@@ -23,6 +24,9 @@ export default function Home() {
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
+    },
+    created() {
+      setLoaded(true)
     },
   })
 
@@ -39,6 +43,30 @@ export default function Home() {
 
   if (!data) {
     return <div></div>
+  }
+
+  let dots = [<></>]
+
+  if (loaded && instanceRef.current) {
+    dots = [
+      ...Array(instanceRef.current?.track.details.slides.length - 4).keys(),
+    ].map((_, i) => {
+      const isActive = i === currentSlide
+      return (
+        <button
+          key={i}
+          onClick={() => {
+            instanceRef.current?.moveToIdx(i)
+          }}
+        >
+          <span
+            className={`flex h-2 w-2 items-center justify-center rounded-full ${
+              isActive ? 'bg-black' : 'bg-gray-200'
+            }`}
+          ></span>
+        </button>
+      )
+    })
   }
 
   const productCards = data.products.map((p) => {
@@ -120,32 +148,40 @@ export default function Home() {
   })
 
   return (
-    <div className='flex justify-center items-center'>
-      <Button
-        variant={'ghost'}
-        onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
-        disabled={currentSlide === 0}
-      >
-        {'<'}
-      </Button>
-      <div className='w-[70rem]'>
-        <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
-        <div className=''>
-          <div ref={sliderRef} className='keen-slider'>
-            {productCards}
+    <div className='flex flex-col items-center space-y-6'>
+      <div className='flex justify-center items-center'>
+        <Button
+          variant={'ghost'}
+          onClick={(e: any) =>
+            e.stopPropagation() || instanceRef.current?.prev()
+          }
+          disabled={currentSlide === 0}
+        >
+          {'<'}
+        </Button>
+        <div className='w-[70rem]'>
+          <h1 className='text-red-400 font-bold text-4xl'>Flash Deals</h1>
+          <div className=''>
+            <div ref={sliderRef} className='keen-slider'>
+              {productCards}
+            </div>
           </div>
         </div>
+        <Button
+          variant={'ghost'}
+          className='isR'
+          onClick={(e: any) =>
+            e.stopPropagation() || instanceRef.current?.next()
+          }
+          disabled={
+            currentSlide ===
+            instanceRef?.current?.track.details.slides.length - 1
+          }
+        >
+          {'>'}
+        </Button>
       </div>
-      <Button
-        variant={'ghost'}
-        className='isR'
-        onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
-        disabled={
-          currentSlide === instanceRef?.current?.track.details.slides.length - 1
-        }
-      >
-        {'>'}
-      </Button>
+      <div className='flex space-x-2'>{dots}</div>
     </div>
   )
 }
