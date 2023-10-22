@@ -197,7 +197,7 @@ export default function Home() {
           {'>'}
         </Button>
       </div>
-      <div className='flex space-x-2'>{dots}</div>
+      <div className='hidden sm:flex space-x-2'>{dots}</div>
     </div>
   )
 }
