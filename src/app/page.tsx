@@ -7,7 +7,7 @@ import 'keen-slider/keen-slider.min.css'
 import KeenSlider from 'keen-slider'
 import {useKeenSlider} from 'keen-slider/react'
 import {Button} from '@/components/ui/button'
-import {StarIcon, StarFilledIcon} from '@radix-ui/react-icons'
+import {StarIcon, StarFilledIcon, HeartIcon} from '@radix-ui/react-icons'
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max)
@@ -103,6 +103,17 @@ export default function Home() {
             <p className='text-red-500 font-bold'>${actualPrice}</p>
           </div>
           <div className='lg:flex space-x-1'>{colorButtons}</div>
+        </div>
+        <div className='flex justify-between'>
+          <Button
+            variant={'outline'}
+            className='grow border-black rounded-full'
+          >
+            Add To Cart
+          </Button>
+          <Button variant={'ghost'}>
+            <HeartIcon height={'20px'} width={'20px'} />
+          </Button>
         </div>
       </Card>
     )
