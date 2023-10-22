@@ -7,6 +7,7 @@ import 'keen-slider/keen-slider.min.css'
 import KeenSlider from 'keen-slider'
 import {useKeenSlider} from 'keen-slider/react'
 import {Button} from '@/components/ui/button'
+import {StarIcon, StarFilledIcon} from '@radix-ui/react-icons'
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max)
@@ -42,10 +43,18 @@ export default function Home() {
 
   const productCards = data.products.map((p) => {
     const imageIndex = getRandomInt(p.images.length)
+    const rating = Math.round(p.rating)
     const colors = ['#070808', '#fafafa', '#4d4e4f', '#eda74c']
     const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
     const rounded = Math.round(discountedPrice * 10) / 10
     const actualPrice = rounded.toFixed(2)
+
+    const stars = [...Array(5)].map((_, i) => {
+      if (i + 1 > rating) {
+        return <StarIcon className='' color='#FFEB3B' />
+      }
+      return <StarFilledIcon className='' color='#FFEB3B' />
+    })
 
     const colorButtons = colors.map((color) => {
       const isActive = color === '#070808'
@@ -85,6 +94,7 @@ export default function Home() {
           </div>
         </div>
         <div className='bg-white text-stone-500 text-sm font-semibold space-y-2'>
+          <div className='flex'>{stars}</div>
           <p>{p.title}</p>
           <div className='flex space-x-1 text-stone-400'>
             <p className='line-through'>${p.price}</p>
