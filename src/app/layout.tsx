@@ -14,36 +14,29 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='bg-blue-800 h-20 flex justify-center'>
-          <div className='w-[70rem] flex justify-between'>
+        <div className='sm:bg-blue-800 h-20 flex justify-center'>
+          <div className='w-[23rem] sm:w-[70rem] flex justify-between'>
             <div></div>
             <div className='flex items-center space-x-8'>
-              <div className='flex flex-col items-center justify-center space-y-1'>
-                <HeartIcon
-                  height={'30px'}
-                  width={'30px'}
-                  color='orange'
-                  className='text-white'
-                />
+              <div className='hidden sm:flex flex-col items-center justify-center space-y-1'>
+                <HeartIcon height={'30px'} width={'30px'} color='orange' />
                 <p className='text-white text-sm'>Wish Lists</p>
               </div>
               <div className='flex flex-col items-center justify-center space-y-1'>
                 <PersonIcon
                   height={'30px'}
                   width={'30px'}
-                  color='orange'
-                  className='text-white'
+                  className='fill-black sm:fill-orange-400'
                 />
-                <p className='text-white text-sm'>Sign In</p>
+                <p className='hidden sm:flex text-white text-sm'>Sign In</p>
               </div>
               <div className='flex flex-col items-center justify-center space-y-1'>
                 <PersonIcon
                   height={'30px'}
                   width={'30px'}
-                  color='orange'
-                  className='text-white'
+                  className='fill-black sm:fill-red-200'
                 />
-                <p className='text-white text-sm'>Cart</p>
+                <p className='hidden sm:flex text-white text-sm'>Cart</p>
               </div>
             </div>
           </div>
