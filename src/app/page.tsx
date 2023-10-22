@@ -46,12 +46,12 @@ export default function Home() {
       const isActive = color === '#070808'
       return (
         <button
-          className={`flex h-9 w-9 items-center justify-center rounded-full ${
+          className={`flex h-7 w-7 items-center justify-center rounded-full ${
             isActive ? 'border' : ''
           } text-xs border-[--theme-primary]`}
         >
           <span
-            className={`flex h-7 w-7 items-center justify-center rounded-full bg-orange-400`}
+            className={`flex h-5 w-5 items-center justify-center rounded-full bg-orange-400`}
             style={{backgroundColor: `${color}`}}
           ></span>
         </button>
