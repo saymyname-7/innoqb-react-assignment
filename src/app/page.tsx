@@ -99,8 +99,8 @@ export default function Home() {
       return (
         <button
           key={color}
-          className={`flex h-6 w-6 items-center justify-center rounded-full ${
-            isActive ? 'border' : ''
+          className={`flex h-6 w-6 items-center justify-center rounded-full border ${
+            isActive ? 'border-black' : 'border-gray-300'
           } text-xs border-[--theme-primary]`}
         >
           <span
