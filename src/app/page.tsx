@@ -148,8 +148,8 @@ export default function Home() {
   })
 
   return (
-    <div className='flex flex-col items-center space-y-6'>
-      <div className='flex justify-center items-center'>
+    <div className='flex flex-col items-center space-y-6 mt-28'>
+      <div className='flex justify-center items-center w-2/3'>
         <Button
           variant={'ghost'}
           onClick={(e: any) =>
