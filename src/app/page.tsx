@@ -8,6 +8,10 @@ import KeenSlider from 'keen-slider'
 import {useKeenSlider} from 'keen-slider/react'
 import {Button} from '@/components/ui/button'
 
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * max)
+}
+
 export default function Home() {
   const [data, setData] = useState(null)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -37,6 +41,7 @@ export default function Home() {
   }
 
   const productCards = data.products.map((p) => {
+    const imageIndex = getRandomInt(p.images.length)
     const colors = ['#070808', '#fafafa', '#4d4e4f', '#eda74c']
     const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
     const rounded = Math.round(discountedPrice * 10) / 10
@@ -60,12 +65,18 @@ export default function Home() {
 
     return (
       <Card key={p.id} className='keen-slider__slide border-0'>
-        <div className='h-56 group relative'>
+        <div className='h-56 group relative overflow-hidden'>
           <Image
             src={p.thumbnail}
             alt={p.description}
             fill={true}
-            className='object-cover'
+            className='absolute top-0 left-0 object-cover duration-500 group-hover:opacity-0'
+          />
+          <Image
+            src={p.images[imageIndex]}
+            alt={p.description}
+            fill={true}
+            className='absolute top-0 left-0 object-cover duration-1000 transition group-hover:scale-110 opacity-0 group-hover:opacity-100 '
           />
           <div className='absolute left-0 right-0 top-1/3 m-auto w-fit invisible group-hover:visible group-hover:translate-y-1/2 transition duration-500'>
             <Button className='' variant={'secondary'}>
