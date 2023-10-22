@@ -68,12 +68,12 @@ export default function Home() {
             className='object-cover'
           />
         </div>
-        <div className='bg-white'>
+        <div className='bg-white text-stone-500 text-sm font-semibold space-y-2'>
           <p>{p.title}</p>
-          <div className='flex space-x-1'>
+          <div className='flex space-x-1 text-stone-400'>
             <p className='line-through'>${p.price}</p>
             <p className=''>From</p>
-            <p className=''>${actualPrice}</p>
+            <p className='text-red-500 font-bold'>${actualPrice}</p>
           </div>
           <div className='lg:flex space-x-1'>{colorButtons}</div>
         </div>
