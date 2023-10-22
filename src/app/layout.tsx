@@ -11,6 +11,8 @@ import {
 import {Input} from '@/components/ui/input'
 import {Button} from '@/components/ui/button'
 import {createContext, useContext, useState} from 'react'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+import Image from 'next/image'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -35,17 +37,25 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={inter.className}>
         <div className='sm:bg-blue-800 h-20 flex justify-center'>
           <div className='w-[23rem] sm:w-[70rem] flex justify-between items-center'>
-            <div className='hidden sm:flex sm:w-2/5'>
-              <Input
-                placeholder='Search the store'
-                className='rounded-none rounded-s-full focus-visible:ring-transparent'
+            <div className='hidden sm:flex sm:w-3/5 items-center space-x-12 '>
+              <Image
+                src={'/innoqb-logo.png'}
+                alt='InnoQb logo'
+                width={100}
+                height={80}
               />
-              <Button
-                variant={'secondary'}
-                className='rounded-none rounded-e-full'
-              >
-                <MagnifyingGlassIcon width={'25px'} height={'25px'} />
-              </Button>
+              <div className='sm:flex w-full items-center'>
+                <Input
+                  placeholder='Search the store'
+                  className='rounded-none rounded-s-full focus-visible:ring-transparent'
+                />
+                <Button
+                  variant={'secondary'}
+                  className='rounded-none rounded-e-full'
+                >
+                  <MagnifyingGlassIcon width={'25px'} height={'25px'} />
+                </Button>
+              </div>
             </div>
             <div className='flex sm:hidden items-center'>
               <Button variant={'ghost'}>
