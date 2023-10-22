@@ -1,7 +1,14 @@
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import './globals.css'
-import {StarIcon, PersonIcon, HeartIcon} from '@radix-ui/react-icons'
+import {
+  MagnifyingGlassIcon,
+  PersonIcon,
+  HeartIcon,
+  HamburgerMenuIcon,
+} from '@radix-ui/react-icons'
+import {Input} from '@/components/ui/input'
+import {Button} from '@/components/ui/button'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -15,8 +22,28 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang='en'>
       <body className={inter.className}>
         <div className='sm:bg-blue-800 h-20 flex justify-center'>
-          <div className='w-[23rem] sm:w-[70rem] flex justify-between'>
-            <div></div>
+          <div className='w-[23rem] sm:w-[70rem] flex justify-between items-center'>
+            <div className='hidden sm:flex sm:w-2/5'>
+              <Input
+                placeholder='Search the store'
+                className='rounded-none rounded-s-full focus-visible:ring-transparent'
+              />
+              <Button
+                variant={'secondary'}
+                className='rounded-none rounded-e-full'
+              >
+                <MagnifyingGlassIcon width={'25px'} height={'25px'} />
+              </Button>
+            </div>
+            <div className='flex sm:hidden items-center'>
+              <Button variant={'ghost'}>
+                <HamburgerMenuIcon width={'25px'} height={'25px'} />
+              </Button>
+
+              <Button variant={'ghost'}>
+                <MagnifyingGlassIcon width={'25px'} height={'25px'} />
+              </Button>
+            </div>
             <div className='flex items-center space-x-8'>
               <div className='hidden sm:flex flex-col items-center justify-center space-y-1'>
                 <HeartIcon height={'30px'} width={'30px'} color='orange' />
