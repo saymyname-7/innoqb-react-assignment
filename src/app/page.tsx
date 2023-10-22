@@ -60,6 +60,7 @@ export default function Home() {
       const isActive = color === '#070808'
       return (
         <button
+          key={color}
           className={`flex h-6 w-6 items-center justify-center rounded-full ${
             isActive ? 'border' : ''
           } text-xs border-[--theme-primary]`}
