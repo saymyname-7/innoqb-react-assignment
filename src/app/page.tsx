@@ -60,13 +60,18 @@ export default function Home() {
 
     return (
       <Card key={p.id} className='keen-slider__slide border-0'>
-        <div className='h-56 relative'>
+        <div className='h-56 group relative'>
           <Image
             src={p.thumbnail}
             alt={p.description}
             fill={true}
             className='object-cover'
           />
+          <div className='absolute left-0 right-0 top-1/3 m-auto w-fit invisible group-hover:visible group-hover:translate-y-1/2 transition duration-500'>
+            <Button className='' variant={'secondary'}>
+              Quick View
+            </Button>
+          </div>
         </div>
         <div className='bg-white text-stone-500 text-sm font-semibold space-y-2'>
           <p>{p.title}</p>
