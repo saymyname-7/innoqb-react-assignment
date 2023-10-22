@@ -46,7 +46,7 @@ export default function Home() {
       const isActive = color === '#070808'
       return (
         <button
-          className={`flex h-7 w-7 items-center justify-center rounded-full ${
+          className={`flex h-6 w-6 items-center justify-center rounded-full ${
             isActive ? 'border' : ''
           } text-xs border-[--theme-primary]`}
         >
@@ -59,7 +59,7 @@ export default function Home() {
     })
 
     return (
-      <Card key={p.id} className='keen-slider__slide'>
+      <Card key={p.id} className='keen-slider__slide border-0'>
         <div className='h-56 relative'>
           <Image
             src={p.thumbnail}
