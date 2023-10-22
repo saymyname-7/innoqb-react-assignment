@@ -164,7 +164,7 @@ export default function Home() {
             e.stopPropagation() || instanceRef.current?.prev()
           }
           disabled={currentSlide === 0}
-          className='invisible sm:visible'
+          className='hidden sm:flex'
         >
           {'<'}
         </Button>
@@ -178,7 +178,7 @@ export default function Home() {
         </div>
         <Button
           variant={'ghost'}
-          className='invisible lg:visible'
+          className='hidden sm:flex'
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
           }
