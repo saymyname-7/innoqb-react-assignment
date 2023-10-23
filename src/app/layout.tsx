@@ -48,7 +48,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='bg-white sm:bg-innoqb-50 h-20 flex justify-center'>
+        <div className='bg-white sm:bg-innoqb-50 h-20 flex justify-center border-b pr-4'>
           <div className='w-[23rem] sm:w-[70rem] flex justify-between items-center'>
             <div className='hidden sm:flex sm:w-3/5 items-center space-x-12 '>
               <Image
