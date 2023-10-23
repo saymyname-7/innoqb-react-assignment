@@ -137,7 +137,7 @@ export default function Home() {
         </div>
         <div className='bg-white text-stone-500 text-sm font-semibold space-y-4 sm:space-y-2'>
           <div className='flex'>{stars}</div>
-          <p>{p.title}</p>
+          <p className='h-10 line-clamp-2'>{p.title} </p>
           <div className='flex space-x-1 text-stone-400'>
             <p className='line-through'>${p.price}</p>
             <p className=''>From</p>
