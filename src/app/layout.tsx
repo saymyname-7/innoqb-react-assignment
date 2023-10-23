@@ -66,15 +66,15 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </div>
             <div className='flex items-center space-x-8'>
               <div className='hidden sm:flex flex-col items-center justify-center space-y-1'>
-                <AiOutlineHeart className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
+                <AiOutlineHeart className='h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
                 <p className='text-white text-sm'>Wish Lists</p>
               </div>
               <div className='flex flex-col items-center justify-center space-y-1'>
-                <BsPerson className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
+                <BsPerson className='h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
                 <p className='hidden sm:flex text-white text-sm'>Sign In</p>
               </div>
               <div className='relative flex flex-col items-center justify-center space-y-1'>
-                <PiShoppingCartLight className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
+                <PiShoppingCartLight className='h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
                 <p className='hidden sm:flex text-white text-sm'>Cart</p>
                 <span
                   className={`absolute top-0 -right-1 -translate-y-1/2 flex h-5 w-5 items-center justify-center rounded-full text-white text-xs`}
