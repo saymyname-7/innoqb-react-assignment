@@ -86,6 +86,7 @@ export default function Home() {
     const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
     const rounded = Math.round(discountedPrice * 10) / 10
     const actualPrice = rounded.toFixed(2)
+    const isSale = p.stock % 2 == 0
 
     const stars = [...Array(5)].map((_, i) => {
       if (i + 1 > rating) {
@@ -131,6 +132,11 @@ export default function Home() {
               Quick View
             </Button>
           </div>
+          {isSale && (
+            <p className='absolute left-2 top-2 bg-white rounded opacity-75 px-1 text-sm text-red-600'>
+              Sale
+            </p>
+          )}
         </div>
         <div className='bg-white text-stone-500 text-sm font-semibold space-y-4 sm:space-y-2'>
           <div className='flex'>{stars}</div>
