@@ -14,8 +14,9 @@ import React, {
   useState,
 } from 'react'
 import {PiShoppingCartLight} from 'react-icons/pi'
-import {BsPerson} from 'react-icons/bs'
+import {BsPerson, BsPersonCircle} from 'react-icons/bs'
 import {AiOutlineHeart} from 'react-icons/ai'
+import {SlBag} from 'react-icons/sl'
 
 import Image from 'next/image'
 
@@ -85,11 +86,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 <p className='text-white text-sm'>Wish Lists</p>
               </div>
               <div className='flex flex-col items-center justify-center space-y-1'>
-                <BsPerson className='h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
+                <BsPersonCircle className='flex sm:hidden h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
+                <BsPerson className='hidden sm:flex h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
                 <p className='hidden sm:flex text-white text-sm'>Sign In</p>
               </div>
               <div className='relative flex flex-col items-center justify-center space-y-1'>
-                <PiShoppingCartLight className='h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
+                <SlBag className='flex sm:hidden h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
+                <PiShoppingCartLight className='hidden sm:flex h-[30px] w-[30px] fill-black sm:fill-orange-300 transition duration-500 ease-in-out hover:scale-125 cursor-pointer' />
                 <p className='hidden sm:flex text-white text-sm'>Cart</p>
                 <span
                   className={`absolute top-0 -right-1 -translate-y-1/2 flex h-5 w-5 items-center justify-center rounded-full text-white text-xs`}
