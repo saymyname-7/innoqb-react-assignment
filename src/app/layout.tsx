@@ -5,7 +5,14 @@ import './globals.css'
 import {MagnifyingGlassIcon, HamburgerMenuIcon} from '@radix-ui/react-icons'
 import {Input} from '@/components/ui/input'
 import {Button} from '@/components/ui/button'
-import {createContext, useContext, useState} from 'react'
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from 'react'
 import {PiShoppingCartLight} from 'react-icons/pi'
 import {BsPerson} from 'react-icons/bs'
 import {AiOutlineHeart} from 'react-icons/ai'
@@ -14,13 +21,21 @@ import Image from 'next/image'
 
 const inter = Inter({subsets: ['latin']})
 
-const ThemeContext = createContext({setItemAmount: (param?: number) => {}})
+const ThemeContext = createContext({setItemAmount: (value: number) => {}} as {
+  setItemAmount: Dispatch<SetStateAction<number>>
+})
 
 export function useThemContext() {
   return useContext(ThemeContext)
 }
 
-export function ThemeProvider({children, setItemAmount}) {
+export function ThemeProvider({
+  children,
+  setItemAmount,
+}: {
+  children: ReactNode
+  setItemAmount: Dispatch<SetStateAction<number>>
+}) {
   return (
     <ThemeContext.Provider value={{setItemAmount}}>
       {children}
@@ -29,7 +44,7 @@ export function ThemeProvider({children, setItemAmount}) {
 }
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
-  const [itemAmount, setItemAmount] = useState(0)
+  const [itemAmount, setItemAmount] = useState<number>(0)
   return (
     <html lang='en'>
       <body className={inter.className}>
