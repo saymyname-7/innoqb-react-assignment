@@ -127,7 +127,7 @@ export default function Home() {
             className='absolute top-0 left-0 object-cover duration-1000 transition group-hover:scale-110 opacity-0 group-hover:opacity-100 '
           />
           <div className='absolute left-0 right-0 top-1/3 m-auto w-fit invisible group-hover:visible group-hover:translate-y-1/2 transition duration-500'>
-            <Button className='' variant={'secondary'}>
+            <Button className='rounded-full font-normal' variant={'secondary'}>
               Quick View
             </Button>
           </div>
