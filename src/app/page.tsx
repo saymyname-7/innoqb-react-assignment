@@ -150,7 +150,7 @@ export default function Home() {
             variant={'outline'}
             className='w-11/12 sm:w-full sm:grow border-black rounded-full'
             onClick={() =>
-              props.setItemAmount((prev) => {
+              props.setItemAmount((prev: number) => {
                 return ++prev
               })
             }
