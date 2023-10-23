@@ -169,14 +169,14 @@ export default function Home() {
 
   return (
     <div className='flex flex-col items-center space-y-6 mt-7 sm:mt-28'>
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center sm:space-x-14'>
         <Button
-          variant={'ghost'}
+          variant={'outline'}
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.prev()
           }
           disabled={currentSlide === 0}
-          className='hidden sm:flex'
+          className='hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white'
         >
           {'<'}
         </Button>
@@ -189,8 +189,8 @@ export default function Home() {
           </div>
         </div>
         <Button
-          variant={'ghost'}
-          className='hidden sm:flex'
+          variant={'outline'}
+          className='hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white'
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
           }
