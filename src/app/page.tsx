@@ -80,7 +80,6 @@ export default function Home() {
   }
 
   const productCards = data.products.map((p) => {
-    const imageIndex = getRandomInt(p.images.length)
     const rating = Math.round(p.rating)
     const colors = ['#070808', '#fafafa', '#4d4e4f', '#eda74c']
     const discountedPrice = ((100 - p.discountPercentage) / 100) * p.price
@@ -116,13 +115,13 @@ export default function Home() {
       <Card key={p.id} className='keen-slider__slide border-0 space-y-4'>
         <div className='h-56 group relative overflow-hidden'>
           <Image
-            src={p.thumbnail}
+            src={p.images[0]}
             alt={p.description}
             fill={true}
             className='absolute top-0 left-0 object-cover duration-500 group-hover:opacity-0'
           />
           <Image
-            src={p.images[imageIndex]}
+            src={p.images[p.images.length - 1]}
             alt={p.description}
             fill={true}
             className='absolute top-0 left-0 object-cover duration-1000 transition group-hover:scale-110 opacity-0 group-hover:opacity-100 '
