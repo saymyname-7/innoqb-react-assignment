@@ -9,8 +9,22 @@ import {Button} from '@/components/ui/button'
 import {StarIcon, StarFilledIcon, HeartIcon} from '@radix-ui/react-icons'
 import {useThemContext} from './layout'
 
+interface IProduct {
+  id: number
+  title: string
+  description: string
+  price: number
+  discountPercentage: number
+  rating: number
+  stock: number
+  brand: string
+  category: string
+  thumbnail: string
+  images: string[]
+}
+
 export default function Home() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<{products: IProduct[]} | null>(null)
   const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [sliderRef, instanceRef] = useKeenSlider({
