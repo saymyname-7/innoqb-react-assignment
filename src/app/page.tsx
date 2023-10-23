@@ -101,9 +101,9 @@ export default function Home() {
 
     const stars = [...Array(5)].map((_, i) => {
       if (i + 1 > rating) {
-        return <StarIcon className='' color='#FFEB3B' />
+        return <StarIcon key={rating} className='' color='#FFEB3B' />
       }
-      return <StarFilledIcon className='' color='#FFEB3B' />
+      return <StarFilledIcon key={rating} className='' color='#FFEB3B' />
     })
 
     const colorButtons = colors.map((color) => {
