@@ -56,11 +56,15 @@ export default function Home() {
   }
 
   let dots = [<></>]
+  let totalSlide = 0
+  let isAtFirst = true
+  let isAtLast = false
 
   if (loaded && instanceRef.current) {
-    dots = [
-      ...Array(instanceRef.current?.track.details.slides.length - 4).keys(),
-    ].map((_, i) => {
+    totalSlide = instanceRef.current.track.details.slides.length
+    isAtFirst = currentSlide === 0
+    isAtLast = currentSlide === totalSlide - 5
+    dots = [...Array(totalSlide - 4)].map((_, i) => {
       const isActive = i === currentSlide
       return (
         <button
@@ -175,8 +179,9 @@ export default function Home() {
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.prev()
           }
-          disabled={currentSlide === 0}
-          className='hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white'
+          className={`hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white ${
+            isAtFirst ? 'sm:invisible' : ''
+          }`}
         >
           {'<'}
         </Button>
@@ -190,13 +195,11 @@ export default function Home() {
         </div>
         <Button
           variant={'outline'}
-          className='hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white'
+          className={`hidden sm:flex rounded-full border-black h-9 py-0 px-3 text-center text-lg hover:bg-blue-500 hover:text-white ${
+            isAtLast ? 'sm:invisible' : ''
+          }`}
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
-          }
-          disabled={
-            currentSlide ===
-            instanceRef?.current?.track.details.slides.length - 1
           }
         >
           {'>'}
