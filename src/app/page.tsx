@@ -4,15 +4,10 @@ import {Card} from '@/components/ui/card'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import 'keen-slider/keen-slider.min.css'
-import KeenSlider from 'keen-slider'
 import {useKeenSlider} from 'keen-slider/react'
 import {Button} from '@/components/ui/button'
 import {StarIcon, StarFilledIcon, HeartIcon} from '@radix-ui/react-icons'
 import {useThemContext} from './layout'
-
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max)
-}
 
 export default function Home() {
   const [data, setData] = useState(null)
@@ -44,7 +39,6 @@ export default function Home() {
     const res = await fetch('https://dummyjson.com/products')
     const data = await res.json()
     setData(data)
-    console.log(data)
   }
 
   useEffect(() => {
