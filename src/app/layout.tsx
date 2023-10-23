@@ -2,16 +2,14 @@
 
 import {Inter} from 'next/font/google'
 import './globals.css'
-import {
-  MagnifyingGlassIcon,
-  PersonIcon,
-  HeartIcon,
-  HamburgerMenuIcon,
-} from '@radix-ui/react-icons'
+import {MagnifyingGlassIcon, HamburgerMenuIcon} from '@radix-ui/react-icons'
 import {Input} from '@/components/ui/input'
 import {Button} from '@/components/ui/button'
 import {createContext, useContext, useState} from 'react'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {PiShoppingCartLight} from 'react-icons/pi'
+import {BsPerson} from 'react-icons/bs'
+import {AiOutlineHeart} from 'react-icons/ai'
+
 import Image from 'next/image'
 
 const inter = Inter({subsets: ['latin']})
@@ -68,23 +66,15 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </div>
             <div className='flex items-center space-x-8'>
               <div className='hidden sm:flex flex-col items-center justify-center space-y-1'>
-                <HeartIcon height={'30px'} width={'30px'} color='orange' />
+                <AiOutlineHeart className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
                 <p className='text-white text-sm'>Wish Lists</p>
               </div>
               <div className='flex flex-col items-center justify-center space-y-1'>
-                <PersonIcon
-                  height={'30px'}
-                  width={'30px'}
-                  className='fill-black sm:fill-orange-400'
-                />
+                <BsPerson className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
                 <p className='hidden sm:flex text-white text-sm'>Sign In</p>
               </div>
               <div className='relative flex flex-col items-center justify-center space-y-1'>
-                <PersonIcon
-                  height={'30px'}
-                  width={'30px'}
-                  className='fill-black sm:fill-red-200'
-                />
+                <PiShoppingCartLight className='h-[30px] w-[30px] fill-black sm:fill-orange-300' />
                 <p className='hidden sm:flex text-white text-sm'>Cart</p>
                 <span
                   className={`absolute top-0 -right-1 -translate-y-1/2 flex h-5 w-5 items-center justify-center rounded-full text-white text-xs`}
