@@ -135,14 +135,21 @@ export default function Home() {
             </p>
           )}
         </div>
-        <div className='bg-white text-stone-500 text-sm font-semibold space-y-4 sm:space-y-2'>
+        <div className='bg-white text-stone-500 text-sm font-semibold space-y-4'>
           <div className='flex'>{stars}</div>
           <p className='h-10 line-clamp-2'>{p.title} </p>
-          <div className='flex space-x-1 text-stone-400'>
-            <p className='line-through'>${p.price}</p>
-            <p className=''>From</p>
-            <p className='text-red-500 font-bold'>${actualPrice}</p>
-          </div>
+          {isSale && (
+            <div className='flex space-x-1 text-stone-400'>
+              <p className='line-through'>${p.price}</p>
+              <p className=''>From</p>
+              <p className='text-red-500 font-bold'>${actualPrice}</p>
+            </div>
+          )}
+          {!isSale && (
+            <div>
+              <p className='text-black font-bold'>${actualPrice}</p>
+            </div>
+          )}
           <div className='flex space-x-1'>{colorButtons}</div>
         </div>
         <div className='flex justify-between'>
